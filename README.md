@@ -23,7 +23,6 @@
     </ul>
 
     <p>Dans le cadre de la consultation d’IVG, nous allons vous recevoir sans l’accompagnant(e), si vous le souhaitez par la suite il/elle pourra être reçu pour les informations médicales.</p>
-
     <form id="questionnaire">
         <!-- SECTION 1 -->
         <h3>Section 1 : Informations générales</h3>
@@ -47,7 +46,6 @@
             <input type="radio" name="volonte" value="Non"> Non
         </div>
         <p>Nous vous proposerons un accompagnement avec une conseillère conjugale et familiale.</p>
-
         <!-- SECTION 2 -->
         <h3>Section 2 : Antécédents médicaux et gynécologiques</h3>
         <div class="question">
@@ -112,7 +110,6 @@
             <input type="radio" name="sexualite" value="Non"> Non
         </div>
     </form>
-
     <!-- SECTION 3 -->
     <h3>Section 3 : Consommations et habitudes</h3>
     <div class="question">
@@ -151,7 +148,6 @@
         <input type="radio" name="drogues" value="Non"> Non
         <input type="text" name="drogues_details" placeholder="Précisez si oui (CBD, cocaïne, cannabis, etc.)">
     </div>
-
     <!-- SECTION 4 -->
     <h3>Section 4 : Dépistages</h3>
     <div class="question">
@@ -195,7 +191,6 @@
         <input type="radio" name="pratique_palpation" value="Oui"> Oui
         <input type="radio" name="pratique_palpation" value="Non"> Non
     </div>
-
     <!-- SECTION 5 -->
     <h3>Section 5 : Contraception/menstruations</h3>
     <div class="question">
@@ -225,7 +220,6 @@
         <input type="radio" name="connaissances_contraception" value="Connaissances moyennes"> Connaissances moyennes<br>
         <input type="radio" name="connaissances_contraception" value="Beaucoup de connaissances"> Beaucoup de connaissances
     </div>
-
 <!-- SECTION 6 -->
     <h3>Section 6 : État émotionnel</h3>
     <p>Au cours de la dernière année vous est-il arrivé de :</p>
@@ -254,7 +248,6 @@
         <input type="radio" name="accompagnement_pro" value="Oui"> Oui
         <input type="radio" name="accompagnement_pro" value="Non"> Non
     </div>
-
 <!-- SECTION 7 -->
     <h3>Section 7 : Violence et sécurité</h3>
     <p>Vous pouvez répondre aux questions sans que nous abordions le sujet si vous ne le souhaitez pas, mais sachez que nous sommes à votre écoute.</p>
@@ -288,7 +281,6 @@
         <input type="radio" name="securite_partenaire" value="Rarement"> Rarement
         <input type="radio" name="securite_partenaire" value="Pas de partenaire"> Pas de partenaire
     </div>
-
 <!-- SECTION 8 -->
     <h3>Section 8 : Autres aspects psychosociaux</h3>
     <div class="question">
@@ -306,20 +298,17 @@
         <input type="radio" name="difficultes_pro" value="Oui"> Oui
         <input type="radio" name="difficultes_pro" value="Non"> Non
     </div>
-
 <!-- SECTION 9 -->
     <h3>Section 9 : Suggestions ou préoccupations spécifiques</h3>
     <div class="question">
         <label>Y a-t-il un sujet que vous aimeriez particulièrement aborder lors de votre consultation ?</label><br>
         <input type="text" name="sujet_particulier" placeholder="Votre réponse">
     </div>
-
 <!-- BUTTONS AT THE END OF EVERYTHING -->
     <button type="button" onclick="genererResume()">Générer Résumé</button>
     <h3>Résumé</h3>
     <pre id="resume"></pre>
     <button type="button" onclick="telechargerResume()">Télécharger Résumé</button>
-
     <!-- All scripts at the end -->
     <script>
         function genererResume() {
@@ -327,14 +316,11 @@
             // Combine Section 1 and 2 form queries
             // Also gather Section 3 and Section 4 data
             // The easiest is to handle everything as if it's under one big form
-
             // If you want the code to gather from the entire document, just query body
             // or keep referencing the form if you prefer that structure.
-
             // We'll gather all inputs from the document, not just the single form with ID
             // Because Section 3 & 4 might be outside the form?
             let allInputs = document.querySelectorAll("input, select, textarea");
-
             allInputs.forEach(input => {
                 // We only care if it's checked (for radio/checkbox) or a text with a value
                 if ((input.type === "checkbox" || input.type === "radio") && input.checked) {
@@ -355,15 +341,12 @@
                     }
                 }
             });
-
             // If no answers, show something
             if(resume === "Résumé des réponses :\n") {
                 resume += "(Aucune réponse renseignée)\n";
             }
-
             document.getElementById("resume").innerText = resume;
         }
-
         function telechargerResume() {
             let texte = document.getElementById("resume").innerText;
             let blob = new Blob([texte], { type: "text/plain" });
@@ -375,4 +358,3 @@
     </script>
 </body>
 </html>
-
